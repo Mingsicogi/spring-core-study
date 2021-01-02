@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <import resource="daos.xml" />
@@ -17,7 +18,24 @@
 
     <!-- 인스턴스 팩토리 메소드를 사용한 인스턴스화 -->
     <bean id="defaultServiceLocator" class="mins.study.user.service.DefaultServiceLocator" />
-    <bean id="anonymousUserService2" factory-bean="defaultServiceLocator" factory-method="createAnonymousUserServiceInstance">
+    <bean id="anonymousUserService2" factory-bean="defaultServiceLocator"
+          factory-method="createAnonymousUserServiceInstance" />
 
+    <!-- Setter DI life cycle -->
+    <bean id="setterInjectionLifeCycleService" class="mins.study.user.service.SetterInjectionLifeCycleService">
+        <property name="message" value="SetterInjectionLifeCycleService Message"/>
+    </bean>
+
+    <!-- Collection injection -->
+    <bean id="injectionService" class="mins.study.user.service.InjectionService"
+          c:message="Hello"
+          c:email="Codedoctor119@gmail.com"
+          p:phone="010-1234-5678">
+
+        <constructor-arg name="props">
+            <map>
+                <entry key="name" value="Minseok" />
+            </map>
+        </constructor-arg>
     </bean>
 </beans>

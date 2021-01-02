@@ -37,5 +37,7 @@ public class MinsApplication {
         // spring에서는 생성자를 통한 주입을 권장함. 이유들 시스템이 실행되기 전에 null에 대한 체크를 할 수 있고, 코드에서 bad code small 을 확인할 수 있기 때문
         AnonymousUserService anonymousUserService = context.getBean("anonymousUserService", AnonymousUserService.class);
 //        anonymousUserService.addAnonymousUser(new User());
+
+
     }
 }
