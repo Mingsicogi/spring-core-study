@@ -4,8 +4,8 @@
     1. https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#beans
     
     
-# 
-Bean Scope
+# About Web Scope
+| Request Scope
 
 ```` 
 @Controller
@@ -30,6 +30,7 @@ Console)
 ![image](./RequestScope.png)
 
 
+| Session Scope
 ````
 @SessionScope
 @RestController
@@ -51,3 +52,5 @@ public class SessionScopeTest {
 Console)
 
 ![image](./SessionScope.png)
+
+//TODO Websocket Scope
