@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <import resource="daos.xml" />
+
+    <bean id="userService" class="mins.study.user.service.UserService">
+        <constructor-arg ref="userDao2"/>
+    </bean>
+
+    <!-- 정적 팩토리 메소드를 통한 인스턴스화 -->
+    <bean id="anonymousUserService" class="mins.study.user.service.AnonymousUserService"
+          factory-method="createInstance">
+        <!--<property name="userService" ref="userDao"/>-->
+    </bean>
+
+    <!-- 인스턴스 팩토리 메소드를 사용한 인스턴스화 -->
+    <bean id="defaultServiceLocator" class="mins.study.user.service.DefaultServiceLocator" />
+    <bean id="anonymousUserService2" factory-bean="defaultServiceLocator" factory-method="createAnonymousUserServiceInstance">
+
+    </bean>
+</beans>

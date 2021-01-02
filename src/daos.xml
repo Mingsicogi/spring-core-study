@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- alias를 통해 userDao 사용을 할 수 있게 설정 -->
+    <!-- @Bean(name=) 설정과 같음-->
+    <alias name="userDao" alias="userDao2" />
+
+    <bean id="userDao" class="mins.study.user.dao.UserDao">
+
+    </bean>
+</beans>
