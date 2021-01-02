@@ -54,3 +54,38 @@ Console)
 ![image](./SessionScope.png)
 
 //TODO Websocket Scope
+
+
+| Application Scope
+
+````
+@ApplicationScope
+@RestController
+@RequiredArgsConstructor
+@RequestMapping("/v1/api/applicationScope")
+public class ApplicationScopeTest {
+
+    private final ApplicationContext applicationContext;
+    private static Integer counter = 0;
+
+    private final WebApplicationContext webApplicationContext;
+
+    @GetMapping
+    public String test() {
+        ApplicationScopeTest requestScopeTest = applicationContext.getBean("applicationScopeTest", ApplicationScopeTest.class);
+        System.out.println(requestScopeTest.toString());
+
+        if(counter++ >= 5) {
+            webApplicationContext.getServletContext();
+            //TODO Servlet 만 destroy 를 하고... 다시 startUp을 하면??!
+        }
+
+        return "Application Scope";
+    }
+}
+````
+
+This is somewhat similar to a Spring singleton bean but differs in two important ways: 
+It is a singleton per ServletContext, not per Spring 'ApplicationContext' (for which there may be several in any given web application), and it is actually exposed and therefore visible as a ServletContext attribute.
+
+-> TODO Servlet 을 reload 하면 Singleton Object가 새로 생길 거 같음(Spring Context는 유지한 체로..) 예제 코드 고민해 보기
