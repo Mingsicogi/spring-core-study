@@ -38,4 +38,7 @@
             </map>
         </constructor-arg>
     </bean>
+
+    <bean id="lazyInjectionService" class="mins.study.user.service.LazyInjectionService" lazy-init="true"
+          c:message="Hello~!"/>
 </beans>

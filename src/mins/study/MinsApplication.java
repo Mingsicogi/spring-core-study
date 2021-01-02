@@ -3,10 +3,9 @@ package mins.study;
 import mins.study.user.User;
 import mins.study.user.dao.UserDao;
 import mins.study.user.service.AnonymousUserService;
+import mins.study.user.service.LazyInjectionService;
 import mins.study.user.service.UserService;
-import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
@@ -38,6 +37,7 @@ public class MinsApplication {
         AnonymousUserService anonymousUserService = context.getBean("anonymousUserService", AnonymousUserService.class);
 //        anonymousUserService.addAnonymousUser(new User());
 
-
+        System.out.println("\n=== LAZY DI Start ===");
+        LazyInjectionService lazyInjectionService = context.getBean("lazyInjectionService", LazyInjectionService.class);
     }
 }
