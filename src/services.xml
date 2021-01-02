@@ -39,6 +39,21 @@
         </constructor-arg>
     </bean>
 
+    <!-- lazy dependency injection(= @Lazy ) -->
     <bean id="lazyInjectionService" class="mins.study.user.service.LazyInjectionService" lazy-init="true"
           c:message="Hello~!"/>
+
+    <!-- autowiring DI (byType, byName => through setter method)-->
+    <!-- Primitive Type은 Autowired가 되지 않음. -->
+<!--    <bean id="autowiredService" class="mins.study.user.service.AutowiredService" autowire="byType" />-->
+<!--    <bean id="autowiredService" class="mins.study.user.service.AutowiredService" autowire="byName" />-->
+    <bean id="autowiredService" class="mins.study.user.service.AutowiredService" autowire="constructor" />
+<!--    <bean id="autowiredService" class="mins.study.user.service.AutowiredService" autowire-candidate="false" />-->
+<!--    <bean id="autowiredService" class="mins.study.user.service.AutowiredService" />-->
+
+    <!-- Bean Scope -->
+    <bean id="beanScopeService" class="mins.study.user.service.BeanScopeService" scope="prototype" c:message="Hello" />
+    <bean id="testServiceForBeanScope" class="mins.study.user.service.TestServiceForBeanScope" lazy-init="true">
+        <property name="beanScopeService" ref="beanScopeService"/>
+    </bean>
 </beans>

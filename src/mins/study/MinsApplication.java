@@ -2,9 +2,7 @@ package mins.study;
 
 import mins.study.user.User;
 import mins.study.user.dao.UserDao;
-import mins.study.user.service.AnonymousUserService;
-import mins.study.user.service.LazyInjectionService;
-import mins.study.user.service.UserService;
+import mins.study.user.service.*;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -37,7 +35,23 @@ public class MinsApplication {
         AnonymousUserService anonymousUserService = context.getBean("anonymousUserService", AnonymousUserService.class);
 //        anonymousUserService.addAnonymousUser(new User());
 
+        /** lazy initialize **/
         System.out.println("\n=== LAZY DI Start ===");
         LazyInjectionService lazyInjectionService = context.getBean("lazyInjectionService", LazyInjectionService.class);
+
+        /** autowired **/
+        AutowiredService autowiredService = context.getBean("autowiredService", AutowiredService.class);
+        autowiredService.isInjectionService();
+
+        /** bean scope **/
+        BeanScopeService beanScopeService = context.getBean("beanScopeService", BeanScopeService.class);
+        beanScopeService.setMessage("Bye");
+
+        // lazy bean create singleton instance
+        TestServiceForBeanScope testServiceForBeanScope = context.getBean("testServiceForBeanScope", TestServiceForBeanScope.class);
+
+        // if BeanScopeService is singleton scope, the memory address value of singleton object will be the same, otherwise will not be the same.
+        System.out.println("beanScopeService.toString() = " + beanScopeService.toString());
+        System.out.println("testServiceForBeanScope.getBeanScopeService().toString() = " + testServiceForBeanScope.getBeanScopeService().toString());
     }
 }
