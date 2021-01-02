@@ -9,6 +9,7 @@ public class BeanScopeService {
         System.out.println("BeanScopeService Created. message : " + message);
     }
 
+
     public void setMessage(String message) {
         this.message = message;
     }
