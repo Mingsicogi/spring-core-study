@@ -1,7 +1,5 @@
 package mins.study.user.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 public class AutowiredService {
 
     private InjectionService injectionService;

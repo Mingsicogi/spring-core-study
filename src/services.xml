@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
        xmlns:c="http://www.springframework.org/schema/c"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
@@ -8,6 +9,7 @@
 
     <bean id="userService" class="mins.study.user.service.UserService">
         <constructor-arg ref="userDao2"/>
+        <constructor-arg ref="customScopeService"/>
     </bean>
 
     <!-- 정적 팩토리 메소드를 통한 인스턴스화 -->
@@ -57,16 +59,15 @@
         <property name="beanScopeService" ref="beanScopeService"/>
     </bean>
 
-    <bean id="configurableBeanFactory"
-          class="org.springframework.beans.factory.support.DefaultListableBeanFactory">
-    </bean>
-    <bean id="customScope" class="mins.study.user.service.CustomScope" />
+<!--    <bean id="configurableBeanFactory"-->
+<!--          class="org.springframework.beans.factory.support.DefaultListableBeanFactory">-->
+<!--    </bean>-->
+<!--    <bean id="customScope" class="mins.study.user.config.CustomScope" />-->
 
-    <bean id="customScopeConfiguration" class="mins.study.user.service.CustomScopeConfiguration">
-        <constructor-arg ref="configurableBeanFactory" />
-        <constructor-arg ref="customScope" />
-    </bean>
+<!--    <bean id="customScopeConfiguration" class="mins.study.user.config.CustomScopeConfiguration">-->
+<!--        <constructor-arg ref="configurableBeanFactory" />-->
+<!--    </bean>-->
 
-    <bean id="customScopeService" class="mins.study.user.service.CustomScopeService" scope="custom" />
-    <bean id="custom2ScopeService" class="mins.study.user.service.Custom2ScopeService" scope="custom"/>
+<!--    <bean id="customScopeService" class="mins.study.user.service.CustomScopeService" depends-on="customScopeConfiguration" /> -->
+<!--    <bean id="custom2ScopeService" class="mins.study.user.service.Custom2ScopeService" depends-on="customScopeConfiguration" />-->
 </beans>

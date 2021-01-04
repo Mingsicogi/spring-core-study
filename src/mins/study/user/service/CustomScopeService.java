@@ -1,5 +1,7 @@
 package mins.study.user.service;
 
+import org.springframework.context.annotation.Scope;
+
 public class CustomScopeService {
 
     public void printer() {
