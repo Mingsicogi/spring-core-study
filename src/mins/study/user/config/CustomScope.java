@@ -1,7 +1,6 @@
-package mins.study.user.service;
+package mins.study.user.config;
 
 import org.springframework.beans.factory.ObjectFactory;
-import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.beans.factory.config.Scope;
 
 import java.util.Collections;
@@ -18,20 +17,30 @@ public class CustomScope implements Scope {
     public Object get(String name, ObjectFactory<?> objectFactory) {
 
         if(!scopedObjects.containsKey(name)) {
+            System.out.println("Custom Scope ===> Created(Get) | name : " + name);
             scopedObjects.put(name, objectFactory.getObject());
+            return scopedObjects.get(name);
+        } else {
+            System.out.println("Custom Scope ===> Get | name : " + name);
+            return scopedObjects.get(name);
         }
 
-        return scopedObjects.get(name);
     }
 
     @Override
     public Object remove(String name) {
+
+        System.out.println("Custom Scope ===> remove | name : " + name);
+
         destructionCallbacks.remove(name);
         return scopedObjects.remove(name);
     }
 
     @Override
     public void registerDestructionCallback(String name, Runnable callback) {
+
+        System.out.println("Custom Scope ===> registerDestructionCallback | name : " + name);
+
         destructionCallbacks.put(name, callback);
     }
 
