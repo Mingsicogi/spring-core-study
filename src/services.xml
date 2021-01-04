@@ -56,4 +56,17 @@
     <bean id="testServiceForBeanScope" class="mins.study.user.service.TestServiceForBeanScope" lazy-init="true">
         <property name="beanScopeService" ref="beanScopeService"/>
     </bean>
+
+    <bean id="configurableBeanFactory"
+          class="org.springframework.beans.factory.support.DefaultListableBeanFactory">
+    </bean>
+    <bean id="customScope" class="mins.study.user.service.CustomScope" />
+
+    <bean id="customScopeConfiguration" class="mins.study.user.service.CustomScopeConfiguration">
+        <constructor-arg ref="configurableBeanFactory" />
+        <constructor-arg ref="customScope" />
+    </bean>
+
+    <bean id="customScopeService" class="mins.study.user.service.CustomScopeService" scope="custom" />
+    <bean id="custom2ScopeService" class="mins.study.user.service.Custom2ScopeService" scope="custom"/>
 </beans>

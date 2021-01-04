@@ -3,6 +3,7 @@ package mins.study;
 import mins.study.user.User;
 import mins.study.user.dao.UserDao;
 import mins.study.user.service.*;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -53,5 +54,14 @@ public class MinsApplication {
         // if BeanScopeService is singleton scope, the memory address value of singleton object will be the same, otherwise will not be the same.
         System.out.println("beanScopeService.toString() = " + beanScopeService.toString());
         System.out.println("testServiceForBeanScope.getBeanScopeService().toString() = " + testServiceForBeanScope.getBeanScopeService().toString());
+
+        ConfigurableBeanFactory configurableBeanFactory = context.getBean("configurableBeanFactory", ConfigurableBeanFactory.class);
+        configurableBeanFactory.registerScope("custom", new CustomScope());
+
+        CustomScopeService customScopeService = context.getBean("customScopeService", CustomScopeService.class);
+        Custom2ScopeService custom2ScopeService = context.getBean("custom2ScopeService", Custom2ScopeService.class);
+
+        customScopeService.printer();
+        custom2ScopeService.printer();
     }
 }
