@@ -4,8 +4,7 @@ import mins.study.user.User;
 import mins.study.user.config.DisposableBeanConfiguration;
 import mins.study.user.dao.UserDao;
 import mins.study.user.service.*;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.Lifecycle;
+import org.springframework.context.*;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -73,6 +72,12 @@ public class MinsApplication {
 
         // destroy bean
         AnnotationConfigApplicationContext annotationConfigApplicationContext = new AnnotationConfigApplicationContext(DisposableBeanConfiguration.class);
-        annotationConfigApplicationContext.close();
+        annotationConfigApplicationContext.registerShutdownHook();
+
+        // LifeCycleProcessor(implements LifeCycle) 를 통해서 LifeCycle interface를 구현한 모든 클래스에게 start signal을 전파함.
+        // SmartLifecycle 는 phase 순으로 시작됨. int 값이 낮은 순부터.. 멈출땐 역순으로 멈춤(int값이 큰 순으로).
+        // LifeCycle 을 implements 한 클래스의 경우 phase를 0으로 설정됨. 때문에 LifeCycle 구현 클래스보다 앞에 설정을 추가하기 위해선 음수값을 이용해야함.
+
+        // ApplicationContextAware => Aware
     }
 }
