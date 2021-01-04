@@ -1,9 +1,12 @@
 package mins.study;
 
 import mins.study.user.User;
+import mins.study.user.config.DisposableBeanConfiguration;
 import mins.study.user.dao.UserDao;
 import mins.study.user.service.*;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.Lifecycle;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
@@ -13,7 +16,8 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  */
 public class MinsApplication {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
+        System.out.println("===== Now! Start Main Method =====");
         /** Introduction to the Spring IoC Container and Beans **/
         ApplicationContext context = new ClassPathXmlApplicationContext("services.xml", "daos.xml", "application-context.xml");
 
@@ -66,5 +70,9 @@ public class MinsApplication {
         custom2ScopeService.printer();
         custom2ScopeService.printer();
         custom2ScopeService.printer();
+
+        // destroy bean
+        AnnotationConfigApplicationContext annotationConfigApplicationContext = new AnnotationConfigApplicationContext(DisposableBeanConfiguration.class);
+        annotationConfigApplicationContext.close();
     }
 }

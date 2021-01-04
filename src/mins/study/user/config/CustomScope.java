@@ -1,5 +1,6 @@
 package mins.study.user.config;
 
+import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.ObjectFactory;
 import org.springframework.beans.factory.config.Scope;
 

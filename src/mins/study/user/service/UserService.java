@@ -2,8 +2,9 @@ package mins.study.user.service;
 
 import mins.study.user.User;
 import mins.study.user.dao.UserDao;
+import org.springframework.beans.factory.DisposableBean;
 
-public class UserService {
+public class UserService implements DisposableBean {
 
     private UserDao userDao;
     private CustomScopeService customScopeService;
@@ -16,5 +17,10 @@ public class UserService {
 
     public void userCheck(User user) {
         System.out.println("Check user... ...");
+    }
+
+    @Override
+    public void destroy() throws Exception {
+        System.out.println("================ Destroy UserService.... ================");
     }
 }
