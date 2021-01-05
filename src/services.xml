@@ -70,4 +70,12 @@
 
 <!--    <bean id="customScopeService" class="mins.study.user.service.CustomScopeService" depends-on="customScopeConfiguration" /> -->
 <!--    <bean id="custom2ScopeService" class="mins.study.user.service.Custom2ScopeService" depends-on="customScopeConfiguration" />-->
+
+    <bean id="parentBean" abstract="true">
+        <property name="name" value="minssogi" />
+    </bean>
+
+    <bean class="mins.study.user.service.BeanDefinitionInheritService" parent="parentBean">
+<!--        <property name="name" value="Minseok" />-->
+    </bean>
 </beans>
