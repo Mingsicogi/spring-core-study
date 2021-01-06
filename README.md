@@ -92,8 +92,40 @@ It is a singleton per ServletContext, not per Spring 'ApplicationContext' (for w
 
 ---
 
-# BeanPostProcessor interface
+# Container Extension
+0. 1 ~ 3 까지 공통점은 multiple하게 설정해서 사용할 수 있고, Ordered interface를 통해 동작 순서를 정할 수 있음.
 
+1. Customizing Beans by Using a BeanPostProcessor
 해당 인터페이스를 implements하면, Spring Container 초기화, 설정, 인스턴스화 후에 추가적인 커스텀 작업을 할 수 있음
 
 ![image](screenshots/BeanPostProcessor.png)
+
+
+2. Customizing Configuration Metadata
+BeanPostProcessor와 유사한 기능이지만 가장 큰 차이는 bean configuration metadata에서 동작한다는 것!
+
+properties 파일에 정의된 설정값을 object에 셋팅하고, spring context에서 관리하면서 다이나믹하게 사용할 수 있음(Override)
+
+````
+@Configuration
+public class CustomizingConfigurationMetadata implements BeanFactoryPostProcessor {
+
+    @Override
+    public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
+
+    }
+
+    @DependsOn("redisProperties")
+    @Bean
+    public PropertyOverrideConfigurer propertyOverrideConfigurer() {
+        PropertyOverrideConfigurer propertyOverrideConfigurer = new PropertyOverrideConfigurer();
+        propertyOverrideConfigurer.setLocation(new ClassPathResource("properties/redis.properties"));
+        return propertyOverrideConfigurer;
+    }
+
+    @Bean(value = {"redis", "redisProperties"})
+    public RedisProperties redisProperties() {
+        return new RedisProperties("localhost:6379", "0");
+    }
+}
+````
