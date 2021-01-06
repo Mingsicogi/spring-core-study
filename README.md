@@ -27,7 +27,7 @@ public class RequestScopeTest {
 ````
 Console)
 
-![image](./RequestScope.png)
+![image](screenshots/RequestScope.png)
 
 
 | Session Scope
@@ -51,7 +51,7 @@ public class SessionScopeTest {
 
 Console)
 
-![image](./SessionScope.png)
+![image](screenshots/SessionScope.png)
 
 //TODO Websocket Scope
 
@@ -89,3 +89,11 @@ This is somewhat similar to a Spring singleton bean but differs in two important
 It is a singleton per ServletContext, not per Spring 'ApplicationContext' (for which there may be several in any given web application), and it is actually exposed and therefore visible as a ServletContext attribute.
 
 -> TODO Servlet 을 reload 하면 Singleton Object가 새로 생길 거 같음(Spring Context는 유지한 체로..) 예제 코드 고민해 보기
+
+---
+
+# BeanPostProcessor interface
+
+해당 인터페이스를 implements하면, Spring Container 초기화, 설정, 인스턴스화 후에 추가적인 커스텀 작업을 할 수 있음
+
+![image](screenshots/BeanPostProcessor.png)
