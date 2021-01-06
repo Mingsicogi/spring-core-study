@@ -7,7 +7,9 @@
     <!-- @Bean(name=) 설정과 같음-->
     <alias name="userDao" alias="userDao2" />
 
-    <bean id="userDao" class="mins.study.user.dao.UserDao">
+    <bean id="userDao" class="mins.study.user.dao.UserDao" />
 
-    </bean>
+<!--    <bean class="org.springframework.beans.factory.config.PropertyOverrideConfigurer">-->
+<!--        <property name="location" value="classpath:properties/redis.properties" />-->
+<!--    </bean>-->
 </beans>

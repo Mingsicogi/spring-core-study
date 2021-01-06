@@ -2,11 +2,19 @@ package mins.study;
 
 import mins.study.user.User;
 import mins.study.user.config.DisposableBeanConfiguration;
+import mins.study.user.config.RedisProperties;
 import mins.study.user.dao.UserDao;
 import mins.study.user.service.*;
+import org.springframework.beans.factory.config.PropertyOverrideConfigurer;
 import org.springframework.context.*;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
+import org.springframework.core.env.Environment;
+import org.springframework.core.env.PropertySource;
+import org.springframework.core.io.ClassPathResource;
+
+import java.util.Properties;
 
 /**
  * Spring Core study
@@ -79,5 +87,16 @@ public class MinsApplication {
         // LifeCycle 을 implements 한 클래스의 경우 phase를 0으로 설정됨. 때문에 LifeCycle 구현 클래스보다 앞에 설정을 추가하기 위해선 음수값을 이용해야함.
 
         // ApplicationContextAware => Aware
+
+//        PropertySourcesPlaceholderConfigurer jdbcProperty = context.getBean("jdbcProperty", PropertySourcesPlaceholderConfigurer.class);
+//        PropertySource<?> propertySource = jdbcProperty.getAppliedPropertySources().get("jdbcProperty");
+//        String property = String.valueOf(propertySource.getProperty("jdbc.url"));
+
+        System.out.println("\n\n==============================================================================================\n\n");
+//        RedisProperties redisProperties = context.getBean("redisProperties", RedisProperties.class);
+//        redisProperties.setDbNo("0");
+//        redisProperties.setHost("localhost:6379");
+
+        custom2ScopeService.printer();
     }
 }
