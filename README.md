@@ -129,3 +129,10 @@ public class CustomizingConfigurationMetadata implements BeanFactoryPostProcesso
     }
 }
 ````
+
+3. FactoryBean
+FactoryBean 을 implements 해서 오브젝트들을 팩토리화 할 수 있음. 이렇게 팩토리화 된 것은 스프링 컨테이너 인스터스 시점에 플러그인 처럼 쓸 수 있음.
+만약에 초기화하는 로직이 복잡하다면 자바 코드로 팩토리화 하는 것도 좋음.
+
+---
+
