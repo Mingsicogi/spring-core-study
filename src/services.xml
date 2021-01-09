@@ -78,4 +78,7 @@
     <bean class="mins.study.user.service.BeanDefinitionInheritService" parent="parentBean">
 <!--        <property name="name" value="Minseok" />-->
     </bean>
+
+    <bean id="googleLoginServiceImpl" class="mins.study.user.service.login.GoogleLoginServiceImpl" />
+    <bean id="facebookLoginServiceImpl" class="mins.study.user.service.login.FacebookLoginServiceImpl" />
 </beans>

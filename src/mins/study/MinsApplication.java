@@ -2,6 +2,7 @@ package mins.study;
 
 import mins.study.user.User;
 import mins.study.user.config.CustomBeanObject;
+import mins.study.user.config.CustomLoginServiceComponent;
 import mins.study.user.config.DisposableBeanConfiguration;
 import mins.study.user.config.RedisProperties;
 import mins.study.user.dao.UserDao;
@@ -107,5 +108,8 @@ public class MinsApplication {
         CustomBeanObject customBeanObject2 = context.getBean("customBeanObject", CustomBeanObject.class);
         System.out.println("=======> " + customBeanObject2.getMessage());
         System.out.println();
+
+        CustomLoginServiceComponent customLoginServiceComponent = context.getBean("customLoginServiceComponent", CustomLoginServiceComponent.class);
+        customLoginServiceComponent.supportingLoginService();
     }
 }

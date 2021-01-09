@@ -136,3 +136,41 @@ FactoryBean 을 implements 해서 오브젝트들을 팩토리화 할 수 있음
 
 ---
 
+# Annotation-based Container Configuration
+
+1. @Required (5.1 이후 @Deprecated)
+ : Setter 메소드에서 주입을 강제하기 위해 사용됨
+ 
+2. @Autowired (JSR 330's javax.inject 패키지의 @Inject 를 대신해 사용할 수 있음)
+ : 생성자 or Setter 메소드에서 사용. (생성자에서 사용의 경우 4.3 이후 버전 부터는 정의된 빈이 한개라면, 따로 명시하지 않아도 됨)
+ 
+ example code)
+````
+public class GoogleLoginServiceImpl implements LoginService {
+}
+
+public class FacebookLoginServiceImpl implements LoginService {
+}
+
+@Component
+public class CustomLoginServiceComponent {
+
+    LoginService[] loginServices;
+
+    @Autowired(required = false)
+    public CustomLoginServiceComponent(LoginService[] loginServices) {
+        this.loginServices = loginServices;
+    }
+
+    public void supportingLoginService() {
+        for (LoginService loginService : loginServices) {
+            System.out.println(loginService);
+        }
+    }
+}
+
+Console Result)
+mins.study.user.service.login.GoogleLoginServiceImpl@59f63e24
+mins.study.user.service.login.FacebookLoginServiceImpl@61f05988
+````
+
