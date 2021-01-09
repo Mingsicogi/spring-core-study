@@ -13,4 +13,6 @@
     <context:property-placeholder location="properties/jdbc.properties" />
 
 <!--    <context:property-override location="properties/redis.properties"/>-->
+
+    <bean id="customBeanObject" class="mins.study.user.config.CustomMyFactoryBean" />
 </beans>

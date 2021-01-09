@@ -1,6 +1,7 @@
 package mins.study;
 
 import mins.study.user.User;
+import mins.study.user.config.CustomBeanObject;
 import mins.study.user.config.DisposableBeanConfiguration;
 import mins.study.user.config.RedisProperties;
 import mins.study.user.dao.UserDao;
@@ -98,5 +99,13 @@ public class MinsApplication {
 //        redisProperties.setHost("localhost:6379");
 
         custom2ScopeService.printer();
+
+        CustomBeanObject customBeanObject = context.getBean("customBeanObject", CustomBeanObject.class);
+        System.out.println("=======> " + customBeanObject.getMessage());
+        System.out.println();
+
+        CustomBeanObject customBeanObject2 = context.getBean("customBeanObject", CustomBeanObject.class);
+        System.out.println("=======> " + customBeanObject2.getMessage());
+        System.out.println();
     }
 }
