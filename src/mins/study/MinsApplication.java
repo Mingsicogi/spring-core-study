@@ -1,10 +1,7 @@
 package mins.study;
 
 import mins.study.user.User;
-import mins.study.user.config.CustomBeanObject;
-import mins.study.user.config.CustomLoginServiceComponent;
-import mins.study.user.config.DisposableBeanConfiguration;
-import mins.study.user.config.RedisProperties;
+import mins.study.user.config.*;
 import mins.study.user.dao.UserDao;
 import mins.study.user.service.*;
 import org.springframework.beans.factory.config.PropertyOverrideConfigurer;
@@ -111,5 +108,8 @@ public class MinsApplication {
 
         CustomLoginServiceComponent customLoginServiceComponent = context.getBean("customLoginServiceComponent", CustomLoginServiceComponent.class);
         customLoginServiceComponent.supportingLoginService();
+
+        NotSingletonInstanceBean notSingletonInstanceBean = context.getBean("notSingletonInstanceBean", NotSingletonInstanceBean.class);
+
     }
 }
