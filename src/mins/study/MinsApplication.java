@@ -112,5 +112,8 @@ public class MinsApplication {
 
         MultipleSameTypeBeanService multipleSameTypeBeanService = context.getBean("multipleSameTypeBeanService", MultipleSameTypeBeanService.class);
         System.out.println(">>>>>>>>>>>>>>>>>> " + multipleSameTypeBeanService.getMovieCategory().getMyServiceName());
+        System.out.println(">>>>>>>>>>>>>>>>>> " + multipleSameTypeBeanService.getDefaultMovieCategory().getMyServiceName());
+        System.out.println(">>>>>>>>>>>>>>>>>> " + multipleSameTypeBeanService.getFourthMovieCategory().getMyServiceName());
+        System.out.println(">>>>>>>>>>>>>>>>>> " + multipleSameTypeBeanService.getFifthMovieCategory().getMyServiceName());
     }
 }

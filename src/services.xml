@@ -82,4 +82,25 @@
     <bean id="googleLoginServiceImpl" class="mins.study.user.service.login.GoogleLoginServiceImpl" />
     <bean id="facebookLoginServiceImpl" class="mins.study.user.service.login.FacebookLoginServiceImpl" />
     <bean id="multipleSameTypeBeanService" class="mins.study.user.service.MultipleSameTypeBeanService" />
+
+    <bean id="thirdMovieCategory"
+          class="mins.study.user.config.MultipleSameTypeBeanConfiguration.DefaultMovieCategory">
+        <qualifier type="mins.study.user.config.Genre">
+
+        </qualifier>
+    </bean>
+
+    <bean id="fourthMovieCategory"
+          class="mins.study.user.config.MultipleSameTypeBeanConfiguration.DefaultMovieCategory">
+        <qualifier type="mins.study.user.config.MovieQualifier">
+            <attribute key="genre" value="fourth"/>
+        </qualifier>
+    </bean>
+
+    <bean id="fifthMovieCategory"
+          class="mins.study.user.config.MultipleSameTypeBeanConfiguration.DefaultMovieCategory">
+        <qualifier type="mins.study.user.config.MovieQualifier">
+            <attribute key="genre" value="fifth"/>
+        </qualifier>
+    </bean>
 </beans>

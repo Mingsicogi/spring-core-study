@@ -144,7 +144,7 @@ FactoryBean 을 implements 해서 오브젝트들을 팩토리화 할 수 있음
 2. @Autowired (JSR 330's javax.inject 패키지의 @Inject 를 대신해 사용할 수 있음)
  : 생성자 or Setter 메소드에서 사용. (생성자에서 사용의 경우 4.3 이후 버전 부터는 정의된 빈이 한개라면, 따로 명시하지 않아도 됨)
  : required 옵션은 default true임. false로 설정하면, 
- 
+ : 타입 기반의 injection
  
 Example code of array field injection)
  
@@ -247,4 +247,5 @@ mins.study.user.service.login.FacebookLoginServiceImpl@61f05988
 
 
 4. @Qualifiers
- : 
+ : @Primary와 비슷한 역할이지만 해당 어노테이션의 경우 bean id로 지정해서 사용할 수 있음
+ 
