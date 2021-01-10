@@ -13,6 +13,7 @@ import org.springframework.core.env.Environment;
 import org.springframework.core.env.PropertySource;
 import org.springframework.core.io.ClassPathResource;
 
+import java.util.Optional;
 import java.util.Properties;
 
 /**
@@ -109,7 +110,6 @@ public class MinsApplication {
         CustomLoginServiceComponent customLoginServiceComponent = context.getBean("customLoginServiceComponent", CustomLoginServiceComponent.class);
         customLoginServiceComponent.supportingLoginService();
 
-        NotSingletonInstanceBean notSingletonInstanceBean = context.getBean("notSingletonInstanceBean", NotSingletonInstanceBean.class);
 
     }
 }

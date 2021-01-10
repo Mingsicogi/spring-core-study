@@ -35,6 +35,11 @@ public class CustomLoginServiceComponent {
 
     @Autowired
     public void setNotSingletonInstanceBean(Optional<NotSingletonInstanceBean> notSingletonInstanceBean) {
+
+        if (notSingletonInstanceBean.isEmpty()) {
+            System.out.println("NotSingletonInstanceBean 는 정의되지 않은 빈입니다.");
+        }
+
         this.notSingletonInstanceBean = notSingletonInstanceBean;
     }
 
