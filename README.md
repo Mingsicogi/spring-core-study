@@ -242,3 +242,9 @@ mins.study.user.service.login.GoogleLoginServiceImpl@59f63e24
 mins.study.user.service.login.FacebookLoginServiceImpl@61f05988
 ````
 
+3. @Primary
+ : 같은 타입으로 여러 빈을 등록했을 때, @Autowired 한 bean의 대표로 지정될 수 있게 설정(구체적인 id를 명시하지 않은 경우)
+
+
+4. @Qualifiers
+ : 

@@ -110,6 +110,7 @@ public class MinsApplication {
         CustomLoginServiceComponent customLoginServiceComponent = context.getBean("customLoginServiceComponent", CustomLoginServiceComponent.class);
         customLoginServiceComponent.supportingLoginService();
 
-
+        MultipleSameTypeBeanService multipleSameTypeBeanService = context.getBean("multipleSameTypeBeanService", MultipleSameTypeBeanService.class);
+        System.out.println(">>>>>>>>>>>>>>>>>> " + multipleSameTypeBeanService.getMovieCategory().getMyServiceName());
     }
 }

@@ -81,4 +81,5 @@
 
     <bean id="googleLoginServiceImpl" class="mins.study.user.service.login.GoogleLoginServiceImpl" />
     <bean id="facebookLoginServiceImpl" class="mins.study.user.service.login.FacebookLoginServiceImpl" />
+    <bean id="multipleSameTypeBeanService" class="mins.study.user.service.MultipleSameTypeBeanService" />
 </beans>
