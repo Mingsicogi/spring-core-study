@@ -103,4 +103,6 @@
             <attribute key="genre" value="fifth"/>
         </qualifier>
     </bean>
+
+    <bean id="genericAutowiringService" class="mins.study.user.service.GenericAutowiringService" />
 </beans>

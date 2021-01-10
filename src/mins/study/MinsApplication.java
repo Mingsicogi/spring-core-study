@@ -115,5 +115,13 @@ public class MinsApplication {
         System.out.println(">>>>>>>>>>>>>>>>>> " + multipleSameTypeBeanService.getDefaultMovieCategory().getMyServiceName());
         System.out.println(">>>>>>>>>>>>>>>>>> " + multipleSameTypeBeanService.getFourthMovieCategory().getMyServiceName());
         System.out.println(">>>>>>>>>>>>>>>>>> " + multipleSameTypeBeanService.getFifthMovieCategory().getMyServiceName());
+
+
+        System.out.println("\n");
+
+        GenericAutowiringService genericAutowiringService = context.getBean("genericAutowiringService", GenericAutowiringService.class);
+        genericAutowiringService.printInstanceType();
+
+        System.out.println();
     }
 }

@@ -249,3 +249,57 @@ mins.study.user.service.login.FacebookLoginServiceImpl@61f05988
 4. @Qualifiers
  : @Primary와 비슷한 역할이지만 해당 어노테이션의 경우 bean id로 지정해서 사용할 수 있음
  
+5. Generics Autowiring Qualifiers
+````
+@Configuration
+public class GenericAutowiringQualifiersConfiguration {
+
+    @Bean
+    public StringStorage stringStorage() {
+        return new StringStorage();
+    }
+
+    @Bean
+    public IntegerStorage integerStorage() {
+        return new IntegerStorage();
+    }
+}
+
+public interface Storage<T> {
+
+    Class<T> getType();
+}
+
+public class StringStorage implements Storage<String> {
+
+    @Override
+    public Class<String> getType() {
+        return String.class;
+    }
+}
+
+public class IntegerStorage implements Storage<Integer> {
+    @Override
+    public Class<Integer> getType() {
+        return Integer.class;
+    }
+}
+
+public class GenericAutowiringService {
+
+    @Autowired
+    Storage<String> stringStorage;
+
+    @Autowired
+    Storage<Integer> integerStorage;
+
+    public void printInstanceType() {
+        System.out.println(stringStorage.getType().getName());
+        System.out.println(integerStorage.getType().getName());
+    }
+}
+
+Console Result)
+java.lang.String
+java.lang.Integer
+````
