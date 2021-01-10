@@ -303,3 +303,33 @@ Console Result)
 java.lang.String
 java.lang.Integer
 ````
+
+6. @Resource
+ : @Autowired 과 거의 비슷한 기능(@Resource 에는 bean id를 명시할 수 있음). JSR-250 스펙. Spring에서 이러한 자원들도 관리하기 위해 지원함.
+ 
+7. @Value
+ : 외부 설정값을 사용하기 위한 편의 기능. 
+ : 외부 설정 파일을 설정하는 방법에는 두가지가 있음.(PropertySourcesPlaceholderConfigurer 를 통한 설정시 해당 메소드는 반드시 전역 메소드로 되어야함.)
+ : SpEL 을 사용할 수 있음
+ 
+````$xslt
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
+
+@Configuration
+@PropertySource(value = {"classpath:properties/cache.properties", "classpath:properties/redis.properties", "classpath:properties/jdbc.properties",})
+public class PropertySourcesConfiguration {
+
+    /**
+     * When configuring a PropertySourcesPlaceholderConfigurer using JavaConfig, the @Bean method must be static.
+     *
+     * @return
+     */
+//    @Bean
+//    public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
+//        return new PropertySourcesPlaceholderConfigurer();
+//    }
+}
+````
