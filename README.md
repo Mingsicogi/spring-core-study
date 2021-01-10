@@ -333,3 +333,7 @@ public class PropertySourcesConfiguration {
 //    }
 }
 ````
+
+8. @PostConstruct, @PreDestroy
+ : 초기화, 제거 의 콜백 메소드를 지원하기 위한 어노테이션. jdk 11 부터는 javax.annotation package가 java core 모듈에서 분리되어 java.annotation-api
+  의존성을 추가해서 사용해야함
