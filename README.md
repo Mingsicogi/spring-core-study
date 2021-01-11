@@ -337,3 +337,45 @@ public class PropertySourcesConfiguration {
 8. @PostConstruct, @PreDestroy
  : 초기화, 제거 의 콜백 메소드를 지원하기 위한 어노테이션. jdk 11 부터는 javax.annotation package가 java core 모듈에서 분리되어 java.annotation-api
   의존성을 추가해서 사용해야함
+  
+---
+# Classpath Scanning and Managed Components
+
+1. @Component
+ : @Component를 기반으로 @Controller, @Service, @Repository가 목적에 맞게 구성됨
+ : @RestController, @SessionScope 도 base 가 되는 어노테이션과 목적에 맞는 어노테이션을 구성시켜 만든 것임
+ : 해당 어노테이션이 추가된 클래스를 자동으로 감지하기 위해선 @Configuration 에서 @ComponentScan에 추가해야 함
+
+````
+@Target({ElementType.TYPE})
+@Retention(RetentionPolicy.RUNTIME)
+@Documented
+@Component
+public @interface Service
+
+@Target({ElementType.TYPE})
+@Retention(RetentionPolicy.RUNTIME)
+@Documented
+@Component
+public @interface Controller
+
+@Target({ElementType.TYPE})
+@Retention(RetentionPolicy.RUNTIME)
+@Documented
+@Component
+public @interface Repository
+
+@Service
+public class CommonComponentService {
+
+    public CommonComponentService() {
+        System.out.println("\n\n>>>>>>>> " + "Created CommonComponentService.\n\n");
+    }
+}
+
+@Configuration
+@ComponentScan(basePackageClasses = {CommonComponentService.class})
+public class ServiceAutoDetectConfiguration {
+}
+```` 
+
