@@ -79,8 +79,9 @@
 <!--        <property name="name" value="Minseok" />-->
     </bean>
 
-    <bean id="googleLoginServiceImpl" class="mins.study.user.service.login.GoogleLoginServiceImpl" />
-    <bean id="facebookLoginServiceImpl" class="mins.study.user.service.login.FacebookLoginServiceImpl" />
+<!--    <bean id="googleLoginServiceImpl" class="mins.study.user.service.login.GoogleLoginServiceImpl" />-->
+<!--    <bean id="facebookLoginServiceImpl" class="mins.study.user.service.login.FacebookLoginServiceImpl" />-->
+
     <bean id="multipleSameTypeBeanService" class="mins.study.user.service.MultipleSameTypeBeanService" />
 
     <bean id="thirdMovieCategory"
