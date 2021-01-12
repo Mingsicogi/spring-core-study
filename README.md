@@ -405,4 +405,4 @@ public class NotScanTargetService01 {
 }
 ````
 
-![image](screenshots/Customizing Scanning.png)
+![image](screenshots/Customizing_Scanning.png)
