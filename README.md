@@ -344,7 +344,7 @@ public class PropertySourcesConfiguration {
 1. @Component
  : @Component를 기반으로 @Controller, @Service, @Repository가 목적에 맞게 구성됨
  : @RestController, @SessionScope 도 base 가 되는 어노테이션과 목적에 맞는 어노테이션을 구성시켜 만든 것임
- : 해당 어노테이션이 추가된 클래스를 자동으로 감지하기 위해선 @Configuration 에서 @ComponentScan에 추가해야 함
+ : 해당 어노테이션이 추가된 클래스를 자동으로 감지하기 위해선 @Configuration 에서 @ComponentScan에 추가해야함
 
 ````
 @Target({ElementType.TYPE})
@@ -379,3 +379,9 @@ public class ServiceAutoDetectConfiguration {
 }
 ```` 
 
+2. Customizing Scanning
+ : include, exclude filter 를 사용해서 지정한 패키지 내에서 filtering해 scan 할 수 있음
+````$xslt
+
+
+````
