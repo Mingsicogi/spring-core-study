@@ -381,7 +381,28 @@ public class ServiceAutoDetectConfiguration {
 
 2. Customizing Scanning
  : include, exclude filter 를 사용해서 지정한 패키지 내에서 filtering해 scan 할 수 있음
-````$xslt
-
-
 ````
+@Configuration
+@ComponentScan(
+        basePackages = "mins.study.user.service.scanTarget",
+        includeFilters = @ComponentScan.Filter(type = FilterType.REGEX, pattern = ".*Service"),
+        excludeFilters = @ComponentScan.Filter(PassComponentScan.class)
+)
+public class CustomScanningConfiguration {
+}
+
+public class ScanTargetService01 {
+    public ScanTargetService01() {
+        System.out.println(">>>>>>> Created ScanTargetService01");
+    }
+}
+
+@PassComponentScan
+public class NotScanTargetService01 {
+    public NotScanTargetService01() {
+        System.out.println(">>>>>>> Created NotScanTargetService01");
+    }
+}
+````
+
+![image](screenshots/Customizing Scanning.png)
