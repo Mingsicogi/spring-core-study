@@ -426,3 +426,34 @@ public class NotScanTargetService01 {
   -> @Named, @ManagedBean == @Component
   
 ![image](screenshots/JSR-330.png)
+
+
+# Using the @Bean Annotation
+ 1. Receiving Lifecycle Callbacks
+    : JSR-250 annotation, @PostConstruct, @PreDestroy
+    : InitializingBean, DisposableBean 을 implements해서 사용
+    : *Aware(BeanFactoryAware, BeanNameAware, MessageSourceAware, ApplicationContextAware..) interface 를 implements
+     해서 사용
+    : @Bean 어노테이션에 init-method, destroy-method attribute를 사
+````
+@Configuration
+public class BeanLifeCycleConfiguration {
+
+    @Bean(initMethod = "init", destroyMethod = "destroy")
+    public PreProcess pre() {
+        return new PreProcess();
+    }
+}
+
+class PreProcess {
+
+    public void init() {
+        System.out.println("PreProcess class initialized");
+    }
+
+    public void destroy() {
+        System.out.println("PreProcess class destroyed");
+    }
+}
+````
+    
