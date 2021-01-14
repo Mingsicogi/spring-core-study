@@ -456,4 +456,62 @@ class PreProcess {
     }
 }
 ````
-    
+
+# Lookup Method Injection
+ 자바 코드를 통한 빈 설정시 좀 더 동적으로 빈을 핸들링해서 사용할 수 있음.
+````
+@Configuration
+public class LookUpMethodInjectionConfiguration {
+
+    @Bean
+    public CommandManager add() {
+        return new CommandManager() {
+            @Override
+            protected Command createCommand() {
+                return () -> System.out.println("Add Processing... ...");
+            }
+        };
+    }
+
+    @Bean
+    public CommandManager sub() {
+        return new CommandManager() {
+            @Override
+            protected Command createCommand() {
+                return () -> System.out.println("sub Processing... ...");
+            }
+        };
+    }
+
+    @Bean
+    public CommandManager mul() {
+        return new CommandManager() {
+            @Override
+            protected Command createCommand() {
+                return () -> System.out.println("mul Processing... ...");
+            }
+        };
+    }
+
+    public abstract static class CommandManager {
+
+        Command command;
+
+        public void executeCommand() {
+            if(command == null) {
+                this.command = createCommand();
+            }
+
+            command.execute();
+        }
+
+        protected abstract Command createCommand();
+    }
+}
+
+interface Command {
+    void execute();
+}
+
+
+````

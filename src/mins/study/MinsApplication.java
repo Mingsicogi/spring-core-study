@@ -125,5 +125,15 @@ public class MinsApplication {
         genericAutowiringService.printInstanceType();
 
         System.out.println();
+        System.out.println();
+
+        LookUpMethodInjectionConfiguration.CommandManager addCommand = context.getBean("add", LookUpMethodInjectionConfiguration.CommandManager.class);
+        addCommand.executeCommand();
+
+        LookUpMethodInjectionConfiguration.CommandManager subCommand = context.getBean("sub", LookUpMethodInjectionConfiguration.CommandManager.class);
+        subCommand.executeCommand();
+
+        LookUpMethodInjectionConfiguration.CommandManager mulCommand = context.getBean("mul", LookUpMethodInjectionConfiguration.CommandManager.class);
+        mulCommand.executeCommand();
     }
 }
