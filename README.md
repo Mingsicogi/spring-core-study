@@ -406,3 +406,23 @@ public class NotScanTargetService01 {
 ````
 
 ![image](screenshots/Customizing_Scanning.png)
+
+
+# Defining Bean Metadata within Components
+ @Bean 어노테이션을 통한 빈 등록
+ 
+# Naming Autodetected Components
+ Spring stereotype annotation(@Component, @Repository, @Service, @Controller) 의 bean name 자동생성
+  -> 특별한 설정이 없으면, class DefaultBeanNameGenerator implements BeanNameGenerator 클래스에서 사용하는 generateBeanName 을 통해 생성됨.
+
+# Providing a Scope for Autodetected Components
+ @Scope 을 사용해 Bean의 lifecycle을 설정할 수 있음
+ 
+# JSR330 Standard Annotations
+ 스프링 3.0 버전 부터 지원 시작
+  -> @Inject == @Autowired
+  -> @Named == @Qualifier
+  -> Optional or @Nullable 사용가능
+  -> @Named, @ManagedBean == @Component
+  
+![image](screenshots/JSR-330.png)
