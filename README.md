@@ -512,6 +512,55 @@ public class LookUpMethodInjectionConfiguration {
 interface Command {
     void execute();
 }
+````
 
+# Further Information About How Java-based Configuration Works Internally
+ 아래 예제 코드의 경우 clientDao() 메소드를 clientService1(), clientService2() 에서 각각 호출돼 System.out.println("Called clientDao
+ "); 가 두번 호출될 거 같지만 실제론 싱글톤 객체가 사용되어 한번만 호출됨.
+````
+@Configuration
+public class InternallyWorkingConfiguration {
 
+    @Bean
+    public ClientService clientService1() {
+        System.out.println("Called clientService1");
+        ClientServiceImpl clientService = new ClientServiceImpl();
+        clientService.setClientDao(clientDao());
+        return clientService;
+    }
+
+    @Bean
+    public ClientService clientService2() {
+        System.out.println("Called clientService2");
+        ClientServiceImpl clientService = new ClientServiceImpl();
+        clientService.setClientDao(clientDao());
+        return clientService;
+    }
+
+    @Bean
+    public ClientDao clientDao() {
+        System.out.println("Called clientDao");
+        return new ClientDaoImpl();
+    }
+}
+
+interface ClientService {
+
+}
+
+class ClientServiceImpl implements ClientService {
+    private ClientDao clientDao;
+
+    public void setClientDao(ClientDao clientDao) {
+        this.clientDao = clientDao;
+    }
+}
+
+interface ClientDao {
+
+}
+
+class ClientDaoImpl implements ClientDao {
+
+}
 ````
