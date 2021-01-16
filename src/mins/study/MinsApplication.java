@@ -135,5 +135,10 @@ public class MinsApplication {
 
         LookUpMethodInjectionConfiguration.CommandManager mulCommand = context.getBean("mul", LookUpMethodInjectionConfiguration.CommandManager.class);
         mulCommand.executeCommand();
+
+        System.out.println();
+        System.out.println();
+        EnvironmentAbstractConfiguration.NormalService normalService = context.getBean("normalService", EnvironmentAbstractConfiguration.NormalService.class);
+        normalService.printer();
     }
 }
