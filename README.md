@@ -627,8 +627,9 @@ ehcache.common.expire contains ? true
 
 ````
 
- : Placeholder Resolution in Statement
+ : Placeholder Resolution in Statement 
  
+ => Any ${…​} placeholders present in a @PropertySource resource location are resolved against the set of property sources already registered against the environment
  
 ![image](screenshots/properties_file_structure.png)
 ````
