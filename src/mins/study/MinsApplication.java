@@ -9,10 +9,11 @@ import org.springframework.context.*;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.FilterType;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.support.GenericApplicationContext;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.core.env.Environment;
-import org.springframework.core.env.PropertySource;
 import org.springframework.core.io.ClassPathResource;
 
 import java.util.Optional;
@@ -23,6 +24,7 @@ import java.util.Properties;
  * https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#beans
  *
  */
+
 public class MinsApplication {
 
     public static void main(String[] args) throws Exception {
@@ -140,5 +142,11 @@ public class MinsApplication {
         System.out.println();
         EnvironmentAbstractConfiguration.NormalService normalService = context.getBean("normalService", EnvironmentAbstractConfiguration.NormalService.class);
         normalService.printer();
+
+        System.out.println("redis.port contains ? " + context.getEnvironment().containsProperty("redis.port"));
+        System.out.println("jdbc.url contains ? " + context.getEnvironment().containsProperty("jdbc.url"));
+
+        System.out.println("ehcache.common.expire contains ? " + context.getEnvironment().containsProperty("ehcache.common.expire"));
+        System.out.println("This environment : " + context.getEnvironment().getRequiredProperty("env"));
     }
 }

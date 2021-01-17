@@ -607,3 +607,39 @@ java -Dspring.profiles.active=beta
 console)
 [BETA] Normal Service Start!!!
 
+Default Profile
+ : -Dspring.profiles.default=local
+ 
+
+2. PropertySource Abstraction
+ : @PropertySource
+````
+@Configuration
+@PropertySource(value = {"classpath:/properties/ehcache.properties"})
+public class PropertySourceConfiguration {
+}
+
+
+System.out.println("ehcache.common.expire contains ? " + context.getEnvironment().containsProperty("ehcache.common.expire"));
+
+console)
+ehcache.common.expire contains ? true
+
+````
+
+ : Placeholder Resolution in Statement
+![image](screenshots/properties_file_structure.png)
+````
+@Configuration
+@PropertySource(value = "classpath:/properties/${spring.profiles.active:local}/common.properties")
+public class PlaceholderResolutionConfiguration {
+}
+
+
+run command)
+java -Dspring.profiles.active=beta
+
+console)
+This environment : local
+
+````
