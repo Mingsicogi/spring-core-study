@@ -646,3 +646,7 @@ console)
 This environment : local
 
 ````
+
+
+## TODO LoadTimeWeaver(used by Spring to dynamically transform classes as they are loaded into the Java virtual machine)
+ 
