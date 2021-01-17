@@ -151,7 +151,7 @@ public class MinsApplication {
         System.out.println("This environment : " + context.getEnvironment().getRequiredProperty("env"));
 
         MessageSource messageSource = new ClassPathXmlApplicationContext("beans.xml");
-        String message = messageSource.getMessage("message", null, "Default", Locale.KOREA);
+        String message = messageSource.getMessage("message", null, "DEFAULT", Locale.KOREA);
         System.out.println("MessageSource context : " + message);
     }
 }

@@ -658,19 +658,7 @@ This environment : local
 ````
 
 <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
-    <property name="defaultEncoding">
-        <value>UTF-8</value>
-    </property>
-    <property name="defaultLocale">
-        <value>KOREA</value>
-    </property>
-    <property name="basenames">
-        <list>
-            <value>resources.messages.format</value>
-            <value>resources.messages.exceptions</value>
-        </list>
-    </property>
-</bean>
+    ¡
 
 MessageSource messageSource = new ClassPathXmlApplicationContext("beans.xml");
 String message = messageSource.getMessage("message", null, "Default", Locale.KOREA);
