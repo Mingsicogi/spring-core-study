@@ -649,4 +649,6 @@ This environment : local
 
 
 ## TODO LoadTimeWeaver(used by Spring to dynamically transform classes as they are loaded into the Java virtual machine)
- 
+
+3. MessageSource
+ : MessageSource interface를 사용해 다국어 기능 지원을 지원할 수 있음.

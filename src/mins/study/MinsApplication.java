@@ -16,6 +16,7 @@ import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.core.env.Environment;
 import org.springframework.core.io.ClassPathResource;
 
+import java.util.Locale;
 import java.util.Optional;
 import java.util.Properties;
 
@@ -148,5 +149,9 @@ public class MinsApplication {
 
         System.out.println("ehcache.common.expire contains ? " + context.getEnvironment().containsProperty("ehcache.common.expire"));
         System.out.println("This environment : " + context.getEnvironment().getRequiredProperty("env"));
+
+        MessageSource messageSource = new ClassPathXmlApplicationContext("beans.xml");
+        String message = messageSource.getMessage("message", null, "Default", Locale.KOREA);
+        System.out.println("MessageSource context : " + message);
     }
 }
