@@ -4,19 +4,31 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
-@Profile(value = {"local", "!beta"})
 @Configuration
 public class EnvironmentAbstractConfiguration {
 
-    @Bean
-    public NormalService normalService() {
-        return new NormalService();
+    @Bean("normalService")
+    @Profile("local")
+    public NormalService normalService_local() {
+        return new NormalService("[LOCAL] Normal Service Start!!!");
+    }
+
+    @Bean("normalService")
+    @Profile("beta")
+    public NormalService normalService_beta() {
+        return new NormalService("[BETA] Normal Service Start!!!");
     }
 
     public static class NormalService {
 
+        private String msg;
+
+        public NormalService(String msg) {
+            this.msg = msg;
+        }
+
         public void printer() {
-            System.out.println("Normal Service Start!!!");
+            System.out.println(msg);
         }
     }
 }
