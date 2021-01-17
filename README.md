@@ -600,10 +600,10 @@ public class EnvironmentAbstractConfiguration {
     }
 }
 
+````
 run command)
 java -Dspring.profiles.active=beta 
 
 console)
 [BETA] Normal Service Start!!!
 
-````
