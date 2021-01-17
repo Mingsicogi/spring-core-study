@@ -657,7 +657,13 @@ This environment : local
  
 ````
 
-<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+    <property name="defaultEncoding">
+        <value>UTF-8</value>
+    </property>
+    <property name="defaultLocale">
+        <value>KOREA</value>
+    </property>
     <property name="basenames">
         <list>
             <value>resources.messages.format</value>
@@ -669,5 +675,8 @@ This environment : local
 MessageSource messageSource = new ClassPathXmlApplicationContext("beans.xml");
 String message = messageSource.getMessage("message", null, "Default", Locale.KOREA);
 System.out.println("MessageSource context : " + message);
+
+console)
+MessageSource context : 악어떼 꽝!
 
 ````
