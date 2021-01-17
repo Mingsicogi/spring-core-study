@@ -628,6 +628,8 @@ ehcache.common.expire contains ? true
 ````
 
  : Placeholder Resolution in Statement
+ 
+ 
 ![image](screenshots/properties_file_structure.png)
 ````
 @Configuration
