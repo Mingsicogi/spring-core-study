@@ -668,3 +668,9 @@ console)
 MessageSource context : 악어떼 꽝!
 
 ````
+
+참고)
+ : ResourceBundleMessageSource 대안으로 ReloadableResourceBundleMessageSource class가 있음. 파일을 다시 읽는 기능을 지원함.
+ 동적으로 메세지 소스가 변경되는 기능이라면, ReloadableResourceBundleMessageSource를 구현해서 사용해야함.
+ 
+	
