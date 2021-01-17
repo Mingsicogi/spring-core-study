@@ -652,3 +652,22 @@ This environment : local
 
 3. MessageSource
  : MessageSource interface를 사용해 다국어 기능 지원을 지원할 수 있음.
+ 
+ ![image](screenshots/messageSource.png)
+ 
+````
+
+<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+    <property name="basenames">
+        <list>
+            <value>resources.messages.format</value>
+            <value>resources.messages.exceptions</value>
+        </list>
+    </property>
+</bean>
+
+MessageSource messageSource = new ClassPathXmlApplicationContext("beans.xml");
+String message = messageSource.getMessage("message", null, "Default", Locale.KOREA);
+System.out.println("MessageSource context : " + message);
+
+````
