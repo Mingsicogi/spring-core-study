@@ -1,5 +1,6 @@
 package mins.study;
 
+import mins.study.user.Person;
 import mins.study.user.User;
 import mins.study.user.config.*;
 import mins.study.user.dao.UserDao;
@@ -153,5 +154,8 @@ public class MinsApplication {
         MessageSource messageSource = new ClassPathXmlApplicationContext("beans.xml");
         String message = messageSource.getMessage("message", null, "DEFAULT", Locale.KOREA);
         System.out.println("MessageSource context : " + message);
+
+        Person person = new Person("", 0);
+        System.out.println(person.toString());
     }
 }
